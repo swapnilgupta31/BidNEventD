@@ -49,7 +49,7 @@ router.post('/CreateCustomer',[
          }
          catch(error){
              console.error(error.message);
-             res.status(500).send("some error occured");
+             res.status(500).json({success:false, error: error.message});
          }
      }
  )
@@ -84,7 +84,7 @@ router.post('/CreateCustomer',[
 }
 catch(error){
   console.error(error.message);
-  res.status(500).send("some error occured")
+  res.status(500).json({success:false, error: error.message});
 }
 
 });

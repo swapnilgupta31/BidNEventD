@@ -54,8 +54,7 @@ router.post('/CreateVendor',[
               res.json({success,Authtoken});
          }
          catch(error){
-            
-             res.status(500).send("some error occured");
+             res.status(500).json({success:false, error: error.message});
          }
      }
  )
@@ -90,8 +89,7 @@ router.post('/CreateVendor',[
       res.json({success,AuthToken}) 
 }
 catch(error){
- 
-  res.status(500).send("some error occured")
+  res.status(500).json({success:false, error: error.message});
 }
 
 });
