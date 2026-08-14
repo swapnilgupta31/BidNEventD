@@ -5,8 +5,6 @@ const Customer = require('../models/Customer');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 // const fetchcustomer = require('../MiddleWare/fetchcustomer');
- const jwt_secret = process.env.JWT_SECRET;
-
 //Route1 signup..../api/customerauth/Createcustomer no login require
 router.post('/CreateCustomer',[
      body('name').isLength({min:5}),
@@ -43,7 +41,7 @@ router.post('/CreateCustomer',[
                       id:customer.id
                   }
               }
-              const Authtoken = jwt.sign(data, jwt_secret);
+              const Authtoken = jwt.sign(data, process.env.JWT_SECRET);
               success = true;
               res.json({success,Authtoken});
          }
@@ -78,7 +76,7 @@ router.post('/CreateCustomer',[
     const data={
         customer:{id:customer.id}
     }
-    const AuthToken=jwt.sign(data,jwt_secret);
+    const AuthToken=jwt.sign(data,process.env.JWT_SECRET);
       success=true;
       res.json({success,AuthToken}) 
 }

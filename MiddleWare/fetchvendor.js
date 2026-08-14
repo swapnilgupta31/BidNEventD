@@ -6,7 +6,7 @@ const fetchvendor=(req,res,next)=>{
         res.status(401).json({error:"please authenticate using valid token"});
     }
     try{
-    const data=jwt.verify(token,JWT_Secret);
+    const data=jwt.verify(token, process.env.JWT_SECRET);
     req.vendor=data.vendor;
     next();
     }

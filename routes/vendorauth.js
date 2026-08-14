@@ -5,8 +5,6 @@ const Vendor = require('../models/Vendor');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fetchvendor = require('../MiddleWare/fetchvendor');
- const jwt_secret = process.env.JWT_SECRET;
-
 //Route1 signup..../api/vendorauth/CreateVendor no login require
 router.post('/CreateVendor',[
      body('name').isLength(),
@@ -49,7 +47,7 @@ router.post('/CreateVendor',[
                   }
               }
              
-              const Authtoken = jwt.sign(data, jwt_secret);
+              const Authtoken = jwt.sign(data, process.env.JWT_SECRET);
               success = true;
               res.json({success,Authtoken});
          }
@@ -84,7 +82,7 @@ router.post('/CreateVendor',[
     const data={
         vendor:{id:vendor.id}
     }
-    const AuthToken=jwt.sign(data,jwt_secret);
+    const AuthToken=jwt.sign(data,process.env.JWT_SECRET);
       success=true;
       res.json({success,AuthToken}) 
 }
