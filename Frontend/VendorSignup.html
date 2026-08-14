@@ -66,7 +66,7 @@
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, email, password, contact_number, gst_invoice, shop_address }),
+                body: JSON.stringify({ name, email, password, phone_num: contact_number, Gst_Number: gst_invoice, Shop_number: shop_address }),
             });
 
             const data = await response.json();
